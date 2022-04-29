@@ -4,6 +4,26 @@
 // longestPalindrome("abba") --> "abba"
 // longestPalindrome("a") --> "a"
 
-function longestPalindrome(s) {}
+function longestPalindrome(s) {
+  let startIndex = 0;
+  let maxIndex = 1;
+
+  function expandLength(left, right) {
+    while (left >= 0 && right < s.length && s[left] == s[right]) {
+      let currentPal = right - left + 1;
+      if (currentPal > maxIndex) {
+        maxIndex = currentPal;
+        startIndex = left;
+      }
+      left--;
+      right++;
+    }
+  }
+  for (let i = 0; i < s.length; i++) {
+    expandLength(i - 1, i + 1);
+    expandLength(i, i + 1);
+  }
+  return s.slice(startIndex, startIndex + maxIndex);
+}
 
 module.exports = longestPalindrome;
