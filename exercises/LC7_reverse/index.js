@@ -7,6 +7,12 @@
 // reverse(2147483649) --> 0
 // reverse(-2147483649) --> 0
 
-function reverse(x) {}
+function reverse(x) {
+  const reversedAnswer = parseInt(
+    Math.abs(x).toString().split("").reverse().join("")
+  );
+  if (reversedAnswer > 0x7fffffff) return 0;
+  return x < 0 ? -reversedAnswer : reversedAnswer;
+}
 
 module.exports = reverse;
