@@ -6,6 +6,13 @@
 // function isPalindrome(-121) --> false
 // function isPalindrome(10) --> false
 
-function isPalindrome(x) {}
+function isPalindrome(x) {
+  const stringx = x.toString();
+  const myString = x.toString().split("").reverse().join("");
+  for (let i = 0; i < myString.length; i++) {
+    if (stringx[i] !== myString[i]) return false;
+  }
+  return true;
+}
 
 module.exports = isPalindrome;
